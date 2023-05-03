@@ -27,7 +27,7 @@ function SideVideo() {
             <div key={index} style={{ display: 'flex', marginTop: '1rem', padding: '0 2rem' }}>
                 <div style={{ display: 'flex', marginTop: '1rem', padding: '0 2rem' }}>
                     <a href={`/video/${video._id}`}  style={{ color:'gray' }}>
-                        <img style={{ width: '100%' }} src={`http://13.124.153.167:5000/${video.thumbnail}`} alt="thumbnail" />
+                        <img style={{ width: '100%' }} src={`http://52.79.243.27:5000/${video.thumbnail}`} alt="thumbnail" />
                     </a>
                 </div>
                 <div style={{ width:'50%' }}>

@@ -29,7 +29,7 @@ function LandingPage() {
         return <Col key={video._id} lg={6} md={8} xs={24}> {/* 창크기가 가장클때는 6, 중간일때는 8, 가장작을때는 24 사이즈 (반응형)*/}
             <div style={{ position: 'relative' }}> 
                 <a href={`/video/${video._id}`} > {/* 클릭시 상세페이지로 넘어가는 링크 */}
-                <img style={{ width: '100%' }} alt="thumbnail" src={`http://13.124.153.167:5000/${video.thumbnail}`} />{/* 썸네일부분 */}
+                <img style={{ width: '100%' }} alt="thumbnail" src={`http://52.79.243.27:5000/${video.thumbnail}`} />{/* 썸네일부분 */}
                 <div className=" duration" //러닝타임
                     style={{ bottom: 0, right:0, position: 'absolute', margin: '4px', 
                     color: '#fff', backgroundColor: 'rgba(17, 17, 17, 0.8)', opacity: 0.8, 

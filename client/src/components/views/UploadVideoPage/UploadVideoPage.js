@@ -150,7 +150,7 @@ function UploadVideoPage(props) {
 
                     {Thumbnail !== "" && //Thumbnail패스가 있을 경우만 아래 div랜더링
                         <div>
-                            <img src={`http://13.124.153.167:5000/${Thumbnail}`} alt="Thumbnail" />
+                            <img src={`http://52.79.243.27:5000/${Thumbnail}`} alt="Thumbnail" />
                         </div>
                     }
                 </div>
