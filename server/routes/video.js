@@ -5,7 +5,7 @@ const multer = require('multer'); // multer = 파일업로드를 위한 모듈
 var ffmpeg = require('fluent-ffmpeg'); // 오디오, 비디오 등 미디어 파일의 인코딩, 디코딩, 변환 하는 프레임워크
 const { Video } = require("../models/Video"); // mongoose 모듈에서 Video 모델을 가져오기
 const { Subscriber } = require("../models/Subscriber"); // mongoose 모듈에서 Subscriber 모델을 가져오기
-//const { auth } = require("../middleware/auth");
+const { auth } = require("../middleware/auth");
 
 
 var storage = multer.diskStorage({ 
@@ -107,7 +107,6 @@ router.post("/getVideoDetail", (req, res) => {
     }) 
 });
 
-
 //구독한 비디오
 router.post("/getSubscriptionVideos", (req, res) => {
 
@@ -152,16 +151,29 @@ router.post("/editVideo", (req, res) => {
   
     // 수정할 비디오 정보 업데이트
     Video.findOneAndUpdate(
-      { _id: videoId },
-      { $set: { title: title, description: description } },
-      { new: true }
+        { _id: videoId },
+        { $set: { 
+        title: title, 
+        description: description,  
+        updatedAt: new Date()} 
+        },
+        { new: true }
     )
-      .exec((err, video) => {
+    .exec((err, video) => {
         if (err) return res.status(400).json({ success: false, err });
         if (!video)
-          return res.status(404).json({ success: false, message: '해당 비디오를 찾을 수 없습니다.' });
-  
+            return res.status(404).json({ success: false, message: '해당 비디오를 찾을 수 없습니다.' });
+
         return res.status(200).json({ success: true, video });
+    });
+  });
+
+  //조회수 증가
+  router.post("/updateViews", (req, res) => {
+    Video.findByIdAndUpdate(req.body.videoId, { $inc: { views: 1 } }, { new: true })
+      .exec((err, video) => {
+        if (err) return res.status(400).send(err);
+        res.status(200).json({ success: true, views: video.views });
       });
   });
 

@@ -11,7 +11,11 @@
     "start": "node server/index.js",
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
-    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "pm2-start": "pm2 start ecosystem.config.js --env production",
+    "pm2-restart": "pm2 restart ecosystem.config.js --env production",
+    "pm2-stop": "pm2 stop ecosystem.config.js --env production",
+    "pm2-delete": "pm2 delete ecosystem.config.js --env production"
   },
   "author": "easy",
   "license": "ISC",

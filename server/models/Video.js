@@ -20,7 +20,7 @@ const videoSchema = mongoose.Schema({
         type: String,
     },
     
-    catogory: String, // 
+    catogory: String, // 카테고리
 
     views : { //뷰 조회수
         type: Number,

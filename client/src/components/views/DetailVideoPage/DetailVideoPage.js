@@ -7,7 +7,6 @@ import SideVideo from './Sections/SideVideo';
 import Subscriber from './Sections/Subscriber';
 import CommentsLogin from './Sections/CommentsLogin'
 import LikeDislikes from './Sections/LikeDislikes';
-import CommentsLogout from './Sections/ComentsLogout';
 
 
 function DetailVideoPage(props) {
@@ -17,6 +16,7 @@ function DetailVideoPage(props) {
     const [CommentLists, setCommentLists] = useState([])
     const [CommentKey, setCommentKey] = useState(0); // key값 추가
     const videoVariable = {videoId: videoId} //비디오 ID값
+
     const refreshFunction = (newCommentLists) => {
         setCommentLists(newCommentLists);
     };
@@ -44,8 +44,6 @@ function DetailVideoPage(props) {
                     alert('댓글 정보 가져오기를 실패했습니다')
                 }
             })
-
-
     }, [])
 
     const updateComment = (newComment) => {
@@ -80,7 +78,7 @@ function DetailVideoPage(props) {
             <Row> {/*  Ant Design 그리드 방식*/}
                 <Col lg={18} xs={24}> {/*반응형 사이즈 조절 */}
                     <div className="postPage" style={{ width: '100%', padding: '3rem 4em' }}>
-                        <video style={{ width: '100%' }} src={`http://52.79.243.27:5000/${Video.filePath}`} controls></video> {/* 비디오 서버포트 5000/Video모델의 filePath 속성의 경로*/}
+                        <video style={{ width: '100%' }} src={`http://localhost:5000/${Video.filePath}`} controls></video> {/* 비디오 서버포트 5000/Video모델의 filePath 속성의 경로*/}
 
                         <List.Item
                             actions={[
