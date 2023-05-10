@@ -36,9 +36,14 @@ function LandingPage() {
         var seconds = Math.floor(video.duration - minutes * 60); //minutes/60 = 초
 
         return (
-            <Col key={video._id} lg={6} md={8} xs={24}>
-      <div style={{ position: "relative" }}>
-        <a href={`/video/${video._id}`} onClick={() => onClickVideo(video._id)}>
+                <Col key={video._id} lg={6} md={8} xs={24}>
+                  <div style={{ position: "relative" }}>
+                    <a  href={`/video/${video._id}`} // 클릭시 상세페이지로 넘어가는 링크
+                          onClick={ //링크로 이동하여 비디오가 열리는 시점에는 이미 조회수 업데이트가 완료되어 있어서 조회수가 증가하지않음
+                              (event) => { event.preventDefault(); viewClick(video._id);  // viewClick 함수에서 조회수를 업데이트하는 axios POST 요청이 실행되고 나면
+                                          window.location.href = `/video/${video._id}`; } //이제 링크를 따라가도록 window.location.href 속성을 이용하여 페이지를 이동
+                        }
+                    > 
           <img
             style={{ width: "100%" }}
             alt="thumbnail"
@@ -70,8 +75,8 @@ function LandingPage() {
       </div>
       <br />
       <Meta
-        avatar={<Avatar src={video.writer.image} />}
-        title={video.title}
+        avatar={<Avatar src={video.writer.image} />} //유저 이미지
+        title={video.title} // 비디오제목
       />
       <span>{video.writer.name} </span>
       <br />
